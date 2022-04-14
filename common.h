@@ -24,6 +24,16 @@ inline double degrees_to_radians(double degrees) {
     return ((degrees * pi) / 180.0);
 }
 
+inline double clamp(double x, double min, double max) {
+    if (x < min) {
+        return min;
+    } else if (x > max) {
+        return max;
+    } else {
+        return x;
+    }
+}
+
 // Random-utility functions
 inline double random_double() {
     // Returns a random real in [0, 1)
