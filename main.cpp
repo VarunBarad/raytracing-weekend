@@ -53,7 +53,12 @@ int main() {
     world.add(make_shared<sphere>(point3(1.0, 0.0, -1.0), 0.5, material_right));
 
     // Camera
-    camera cam(point3(-2, 2, 1), point3(0, 0, -1), vec3(0, 1, 0), 20.0, aspect_ratio);
+    point3 look_from(3, 3, 2);
+    point3 look_at(0, 0, -1);
+    vec3 vup(0, 1, 0);
+    auto dist_to_focus = (look_from - look_at).length();
+    auto aperture = 2.0;
+    camera cam(look_from, look_at, vup, 20.0, aspect_ratio, aperture, dist_to_focus);
 
     // Render
     std::cout << "P3" << std::endl << image_width << ' ' << image_height << std::endl << "255" << std::endl;
